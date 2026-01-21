@@ -37,6 +37,7 @@ def encrypt(plaintext: str, shift: int) -> str:
                 char_lst[i] = chr((ord(char_lst[i]) - base_2 + reducer) % 26 + base_2)
     #In Python, modulo is defined so that the result has the same sign as the divisor.
     #a % b = a - b * floor(a / b)
+    return ''.join(char_lst)
 
 def decrypt(ciphertext: str, shift: int) -> str:
     """
