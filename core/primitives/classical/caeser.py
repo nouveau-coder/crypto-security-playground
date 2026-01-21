@@ -24,13 +24,26 @@ def encrypt(plaintext: str, shift: int) -> str:
     ToDo:
         Implement letter-wise shifting with wrap-around for the alphabet.
     """
-    pass
+    char_lst = [i for i in plaintext]
+    reducer = shift % 26  # normalize shift to be within 0-25
+    base_1 = ord('A')
+    base_2 = ord('a')
+
+    for i in range(len(char_lst)):
+        if char_lst[i].isalpha():
+            if char_lst[i].isupper():
+                char_lst[i] = chr((ord(char_lst[i]) - base_1 + reducer) % 26 + base_1)
+            else:
+                char_lst[i] = chr((ord(char_lst[i]) - base_2 + reducer) % 26 + base_2)
+    #In Python, modulo is defined so that the result has the same sign as the divisor.
+    #a % b = a - b * floor(a / b)
 
 def decrypt(ciphertext: str, shift: int) -> str:
     """
     Decrypt ciphertext encrypted using a Caesar cipher with a fixed shift.
 
     Parameters:
+    
         ciphertext (str): The encrypted message to be decrypted.
         shift (int): The shift value originally used during encryption.
 
