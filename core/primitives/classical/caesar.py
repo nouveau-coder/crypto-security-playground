@@ -54,4 +54,4 @@ def decrypt(ciphertext: str, shift: int) -> str:
     ToDo:
         Reverse the Caesar shift applied during encryption.
     """
-    pass
+    return encrypt(ciphertext, -shift)
